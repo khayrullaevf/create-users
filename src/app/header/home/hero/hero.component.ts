@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SubscribeService } from '../../../Services/subscribe.service';
 
 @Component({
   selector: 'app-hero',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {
+
+  subscribe=inject(SubscribeService)
+  // constructor(private subscribe:SubscribeService){
+  // }
+
+  onSubscribe(){
+    this.subscribe.OnSubscribeClicked('yearly')
+  }
+
 
 }

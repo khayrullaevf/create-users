@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { LoggerService } from './Services/logger.service';
+import { SubscribeService } from './Services/subscribe.service';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +13,11 @@ import { UserListComponent } from './header/admin/user-list/user-list.component'
 import { FormsModule } from '@angular/forms';
 import { HeroComponent } from './header/home/hero/hero.component';
 import { SidebarComponent } from './header/home/sidebar/sidebar.component';
+import { UserService } from './Services/user.service';
+
+
+export const USER_TOKEN=new InjectionToken<UserService>('USER_SERVICE')
+
 
 @NgModule({
   declarations: [
@@ -28,7 +35,7 @@ import { SidebarComponent } from './header/home/sidebar/sidebar.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SubscribeService,{provide:USER_TOKEN, useClass:UserService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
