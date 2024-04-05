@@ -179,3 +179,7 @@ h2{
 p{
     margin: 5px 0px;
 }
+
+button{
+  cursor: pointer;
+}
